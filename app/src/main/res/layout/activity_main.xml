@@ -58,6 +58,12 @@
         android:text="Selecciona platos y bebidas:"
         android:textStyle="bold"
         />
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Buscar en el menú..."
+        android:iconifiedByDefault="false"/>
 
     <ListView
         android:id="@+id/listViewMenu"
@@ -81,5 +87,23 @@
         android:text="Resumen de la Venta aparecerá aquí."
         android:textStyle="italic"
         android:textColor="#666666"
+        />
+    <TextView
+        android:id="@+id/ContPlatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Platos del Menu:"
+        android:textStyle="bold"
+        android:textColor="#f3e755"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/ContBebidas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bebidas del Menú:"
+        android:textStyle="bold"
+        android:textColor="#f3e755"
+        android:textSize="16sp"
         />
 </LinearLayout>
