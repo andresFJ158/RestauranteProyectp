@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Restaurante</string>
+    <string-array name="tipo_venta">
+        <item>Mesa</item>
+        <item>Para Llevar</item>
+    </string-array>
+</resources>

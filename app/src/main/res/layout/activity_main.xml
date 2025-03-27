@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".models.MainActivity"
+    android:id="@+id/main">
+
+    <TextView
+        android:id="@+id/textViewTotalVendido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Vendido: $0.00"
+        android:textStyle="bold"
+        android:textColor="#00796B"
+        android:textSize="16sp"
+        />
+
+    <!-- Selector de tipo de venta -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona el tipo de venta:"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinnerTipoVenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/tipo_venta"
+        android:minHeight="48dp" />
+
+    <!-- Campo para ingresar número de mesa (visible solo si es "Mesa") -->
+    <LinearLayout
+        android:id="@+id/layoutMesa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Número de mesa:" />
+
+        <EditText
+            android:id="@+id/editTextNumeroMesa"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <!-- Lista de Platos y Bebidas -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona platos y bebidas:"
+        android:textStyle="bold"
+        />
+
+    <ListView
+        android:id="@+id/listViewMenu"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:choiceMode="multipleChoice"
+        android:listSelector="@android:color/holo_blue_light" />
+
+    <!-- Botón para registrar la venta -->
+    <Button
+        android:id="@+id/btnRegistrarVenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Venta" />
+
+    <!-- Resumen de la venta -->
+    <TextView
+        android:id="@+id/textViewResumen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resumen de la Venta aparecerá aquí."
+        android:textStyle="italic"
+        android:textColor="#666666"
+        />
+</LinearLayout>
