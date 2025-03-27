@@ -11,7 +11,7 @@
         android:id="@+id/textViewTotalVendido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Vendido: $0.00"
+        android:text="Total Vendido: BS 0.00"
         android:textStyle="bold"
         android:textColor="#00796B"
         android:textSize="16sp"
