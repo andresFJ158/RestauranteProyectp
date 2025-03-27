@@ -1,19 +1,10 @@
 package com.example.restaurante.models;
 
-public class Bebida {
-    private String nombre;
-    private double precio;
-
-    public Bebida(String nombre, double precio) {
-        this.nombre = nombre;
-        this.precio = precio;
+public class Bebida extends Comida {
+    int litros = 0;
+    public Bebida(String nombre, double precio,int litros, int stock) {
+        super(nombre,precio,stock);
+        this.litros = litros;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
 }

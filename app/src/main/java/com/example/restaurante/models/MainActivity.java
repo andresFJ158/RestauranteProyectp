@@ -1,5 +1,6 @@
 package com.example.restaurante.models;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewResumen;
     private List<Object> menuItems;
     private MenuAdapter menuAdapter;
-
+    private TextView textContPlatos;
+    private TextView textContBebidas;
+    private SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         restaurante = new Restaurante();
-        textViewTotalVendido = findViewById(R.id.textViewTotalVendido);
-
 
         // Referencias UI
         spinnerTipoVenta = findViewById(R.id.spinnerTipoVenta);
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         listViewMenu = findViewById(R.id.listViewMenu);
         textViewResumen = findViewById(R.id.textViewResumen);
         Button btnRegistrarVenta = findViewById(R.id.btnRegistrarVenta);
+        textViewTotalVendido = findViewById(R.id.textViewTotalVendido);
+        textContPlatos = findViewById(R.id.ContPlatos);
+        textContBebidas = findViewById(R.id.ContBebidas);
+        searchView = findViewById(R.id.searchView);
 
         // Configurar Spinner
         spinnerTipoVenta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -67,9 +73,23 @@ public class MainActivity extends AppCompatActivity {
 
         // Cargar Menú
         cargarMenu();
+        VerfStock();
 
         // Configurar Botón
         btnRegistrarVenta.setOnClickListener(view -> registrarVenta());
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                menuAdapter.filter(newText);
+                return true;
+            }
+        });
     }
 
     private void cargarMenu() {
@@ -129,5 +149,30 @@ public class MainActivity extends AppCompatActivity {
 
         // Limpiar número de mesa
         editTextNumeroMesa.setText("");
+        VerfStock();
+    }
+
+
+    private void VerfStock()
+    {
+        textContPlatos.setText("Platos del Menú: "+String.valueOf(restaurante.getMenu().ContPlatos()));
+        textContBebidas.setText("Bebidas del Menú: "+String.valueOf(restaurante.getMenu().ContBebidas()));
+
+        int platos = restaurante.getMenu().ContPlatos();
+        int bebidas = restaurante.getMenu().ContBebidas();
+        if(platos >= 10)
+            textContPlatos.setTextColor(Color.parseColor("#00796B"));
+        else if (platos >= 5 && platos < 10 )
+            textContPlatos.setTextColor(Color.parseColor("#f3e755"));
+        else
+            textContPlatos.setTextColor(Color.parseColor("#FF5733"));
+
+        if(bebidas >= 10)
+            textContBebidas.setTextColor(Color.parseColor("#00796B"));
+        else if (bebidas >= 5 && platos < 10 )
+            textContBebidas.setTextColor(Color.parseColor("#f3e755"));
+        else
+            textContBebidas.setTextColor(Color.parseColor("#FF5733"));
+
     }
 }

@@ -12,10 +12,12 @@ public class Restaurante {
     public Restaurante() {
         this.menu = new Menu();
         this.ventas = new ArrayList<>();
-        menu.agregarPlato("Hamburguesa", 10.0);
-        menu.agregarPlato("Pizza", 48.0);
-        menu.agregarBebida("Coca Cola", 14.0);
-        menu.agregarBebida("Jugo de Naranja", 5.0);
+        menu.agregarPlato("Hamburguesa", 10.0,"Tomate,Lechuga,Pan,Carne",12);
+        menu.agregarPlato("Pizza", 48.0,"Peperoni,Queso,SalsaTomate",4);
+        menu.agregarBebida("Coca Cola", 14.0,2,2);
+        menu.agregarBebida("Jugo de Naranja", 5.0,1,10);
+        menu.agregarPlato("Kepery", 10.0,"Tomate,Lechuga,Pan,Carne",12);
+
     }
 
     public Menu getMenu() {
